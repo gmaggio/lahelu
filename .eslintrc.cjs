@@ -29,6 +29,24 @@ module.exports = {
     "import/no-unresolved": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
+    "react/function-component-definition": [
+      "error",
+      {
+        namedComponents: "arrow-function",
+        unnamedComponents: "function-declaration",
+      },
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        props: true, // Keep the rule for other cases
+        ignorePropertyModificationsFor: [
+          // Ignore reassignment for Redux Toolkit's state parameter
+          // (because it uses Immer)
+          "state",
+        ],
+      },
+    ],
   },
   settings: {
     react: {
