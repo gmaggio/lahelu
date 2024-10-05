@@ -14,7 +14,7 @@ const HomeView: React.FC = () => {
   }
 
   return (
-    <View>
+    <View className="flex-1 justify-center items-center bg-white">
       <FlatList
         data={products}
         renderItem={({ item }) => (
