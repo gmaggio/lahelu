@@ -1,14 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
+interface Post {
+  postID: string;
+  userID: string;
+  title: string;
+  totalUpvotes: number;
+  totalDownvotes: number;
+  totalComments: number;
+  createTime: string;
+  feed: string;
+  media: string;
+  mediaThumbnail: string;
+  sensitive: string;
+  mediaType: string;
+  hashtags: string;
+  userUsername: string;
+  userAvatar: string;
 }
 
 interface HomeState {
-  products: Product[];
+  posts: Post[];
   loading: boolean;
   error: string | null;
   page: number;
@@ -16,25 +27,25 @@ interface HomeState {
 }
 
 const initialState: HomeState = {
-  products: [],
+  posts: [],
   loading: false,
   error: null,
   page: 1,
   hasMore: true,
 };
 
-export const fetchProducts = createAsyncThunk(
-  "home/fetchProducts",
+export const fetchPosts = createAsyncThunk(
+  "home/fetchPosts",
   async (page: number, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://api.example.com/products?page=${page}`,
+        `https://localhost:3001/posts?_page=${page}%_limit=10`,
       );
       const data = await response.json();
       return data;
     } catch (error) {
       console.error(error);
-      return rejectWithValue("Failed to fetch products");
+      return rejectWithValue("Failed to fetch posts");
     }
   },
 );
@@ -44,17 +55,17 @@ const homeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.pending, (state) => {
+    builder.addCase(fetchPosts.pending, (state) => {
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = [...state.products, ...action.payload];
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
+      state.posts = [...state.posts, ...action.payload];
       state.loading = false;
       state.page += 1;
       state.hasMore = action.payload.length > 0;
     });
-    builder.addCase(fetchProducts.rejected, (state, action) => {
+    builder.addCase(fetchPosts.rejected, (state, action) => {
       state.error = action.payload as string;
       state.loading = false;
     });

@@ -3,9 +3,9 @@ import { FlatList, Text, View, ActivityIndicator } from "react-native";
 import useHomeViewModel from "@features/home/presentation/viewmodels/useHomeViewModel";
 
 const HomeView: React.FC = () => {
-  const { products, loading, error, loadMore } = useHomeViewModel();
+  const { posts, loading, error, loadMore } = useHomeViewModel();
 
-  if (loading && products.length === 0) {
+  if (loading && posts.length === 0) {
     return <ActivityIndicator />;
   }
 
@@ -16,14 +16,14 @@ const HomeView: React.FC = () => {
   return (
     <View className="flex-1 justify-center items-center bg-white">
       <FlatList
-        data={products}
+        data={posts}
         renderItem={({ item }) => (
           <View>
-            <Text>{item.name}</Text>
-            <Text>{item.description}</Text>
+            <Text>{item.title}</Text>
+            <Text>{item.userUsername}</Text>
           </View>
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.postID.toString()}
         onEndReached={loadMore}
         onEndReachedThreshold={0.1}
         ListFooterComponent={loading ? <ActivityIndicator /> : null}

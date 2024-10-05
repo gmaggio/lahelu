@@ -5,7 +5,8 @@
     "baseUrl": "./",
     "paths": {
       "@features/*": ["src/features/*"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@navigation/*": ["src/navigation/*"]
     }
   }
 }
