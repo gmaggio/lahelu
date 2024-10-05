@@ -1,6 +1,6 @@
-import React from "react";
-import { FlatList, Text, View, ActivityIndicator } from "react-native";
-import useHomeViewModel from "@features/home/presentation/viewmodels/useHomeViewModel";
+import React from 'react';
+import { FlatList, Text, View, ActivityIndicator } from 'react-native';
+import useHomeViewModel from '@features/home/presentation/viewmodels/useHomeViewModel';
 
 const HomeView: React.FC = () => {
   const { posts, loading, error, loadMore } = useHomeViewModel();
@@ -14,7 +14,7 @@ const HomeView: React.FC = () => {
   }
 
   return (
-    <View className="flex-1 justify-center items-center bg-white">
+    <View className="items-center justify-center flex-1 bg-white">
       <FlatList
         data={posts}
         renderItem={({ item }) => (

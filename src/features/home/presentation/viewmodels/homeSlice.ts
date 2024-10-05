@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface Post {
   postID: string;
@@ -35,7 +35,7 @@ const initialState: HomeState = {
 };
 
 export const fetchPosts = createAsyncThunk(
-  "home/fetchPosts",
+  'home/fetchPosts',
   async (page: number, { rejectWithValue }) => {
     try {
       const response = await fetch(
@@ -45,13 +45,13 @@ export const fetchPosts = createAsyncThunk(
       return data;
     } catch (error) {
       console.error(error);
-      return rejectWithValue("Failed to fetch posts");
+      return rejectWithValue('Failed to fetch posts');
     }
   },
 );
 
 const homeSlice = createSlice({
-  name: "home",
+  name: 'home',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useAppDispatch, RootState } from "@shared/state/store";
-import { fetchPosts } from "./homeSlice";
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch, RootState } from '@shared/state/store';
+import { fetchPosts } from './homeSlice';
 
 const useHomeViewModel = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ const useHomeViewModel = () => {
 
   useEffect(() => {
     dispatch(fetchPosts(page));
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   const loadMore = () => {
     if (!loading && hasMore) {

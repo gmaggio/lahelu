@@ -1,5 +1,5 @@
-const { faker } = require('@faker-js/faker');
-const fs = require('fs');
+import { faker } from '@faker-js/faker';
+import { writeFileSync } from 'fs';
 
 const tags = [
   'Absurd',
@@ -58,14 +58,12 @@ const generateTopics = (count) => {
     topics.push({
       topicID: `topic-${i}`,
       userID: `user-${userID}`,
-      title: faker.lorem.words(
-        faker.number.int({ min: 2, max: 5 }),
-      ).toUpperCase(),
+      title: faker.lorem
+        .words(faker.number.int({ min: 2, max: 5 }))
+        .toUpperCase(),
       media: `media-topic-${i}`,
       totalMembers: faker.number.int({ min: 10, max: 100 }),
-      description: faker.lorem.sentences(
-        faker.number.int({ min: 1, max: 2 }),
-      ),
+      description: faker.lorem.sentences(faker.number.int({ min: 1, max: 2 })),
       userUsername: faker.internet.userName(),
       userAvatar: `avatar-${userID}`,
     });
@@ -73,20 +71,19 @@ const generateTopics = (count) => {
   return topics;
 };
 
-const generateTags = () => tags.map((tag, index) => ({
-  name: tag,
-  icon: `icon-${tag.toLowerCase()}`,
-  starred: faker.datatype.boolean(),
-}));
-;
-
+const generateTags = () =>
+  tags.map((tag) => ({
+    name: tag,
+    icon: `icon-${tag.toLowerCase()}`,
+    starred: faker.datatype.boolean(),
+  }));
 const generateMockData = () => {
   const mockData = {
     posts: generatePosts(100),
     topics: generateTopics(20),
     tags: generateTags(),
   };
-  fs.writeFileSync('mock-api/db.json', JSON.stringify(mockData, null, 2));
+  writeFileSync('mock-api/db.json', JSON.stringify(mockData, null, 2));
 };
 
 generateMockData();
