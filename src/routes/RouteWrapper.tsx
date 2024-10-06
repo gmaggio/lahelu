@@ -5,13 +5,13 @@ const Stack = createNativeStackNavigator();
 
 const RouteWrapper = () => (
   <Stack.Navigator>
-    {routeMap.map((Current) => {
+    {Object.entries(routeMap).map(([key, Current]) => {
       const CurrentComponent = Current.component;
 
       return (
         <Stack.Screen
-          key={Current.name}
-          name={Current.name}
+          key={key}
+          name={key}
           component={CurrentComponent}
           options={Current.options}
         />
