@@ -1,23 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '@env';
-
-interface Post {
-  postID: string;
-  userID: string;
-  title: string;
-  totalUpvotes: number;
-  totalDownvotes: number;
-  totalComments: number;
-  createTime: string;
-  feed: string;
-  media: string;
-  mediaThumbnail: string;
-  sensitive: string;
-  mediaType: string;
-  hashtags: string;
-  userUsername: string;
-  userAvatar: string;
-}
+import { Post } from '@core/models/Post';
 
 interface HomeState {
   posts: Post[];
