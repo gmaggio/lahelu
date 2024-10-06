@@ -27,12 +27,8 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: ['**/mock-api/**'],
-      },
-    ],
+    'import/no-extraneous-dependencies': ['off'],
+    'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1 }],
@@ -42,6 +38,8 @@ module.exports = {
         namedComponents: ['arrow-function', 'function-declaration'],
       },
     ],
+    'comma-dangle': ['error', 'always-multiline'],
+    'linebreak-style': 'off',
     'no-param-reassign': [
       'error',
       {
@@ -55,6 +53,14 @@ module.exports = {
     ],
     'no-plusplus': 'off',
   },
+  overrides: [
+    {
+      files: ['src/features/**/*.ts', 'src/features/**/*.tsx'],
+      rules: {
+        'import/prefer-default-export': 'error',
+      },
+    },
+  ],
   settings: {
     react: {
       version: 'detect',

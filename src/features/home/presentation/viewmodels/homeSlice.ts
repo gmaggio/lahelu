@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_BASE_URL } from '@env';
 
 interface Post {
   postID: string;
@@ -39,12 +40,11 @@ export const fetchPosts = createAsyncThunk(
   async (page: number, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://localhost:3001/posts?_page=${page}%_limit=10`,
+        `${API_BASE_URL}/posts?_page=${page}&_limit=10`,
       );
       const data = await response.json();
       return data;
-    } catch (error) {
-      console.error(error);
+    } catch {
       return rejectWithValue('Failed to fetch posts');
     }
   },
