@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-import { networkInterfaces as _networkInterfaces } from 'os';
-import { writeFileSync } from 'fs';
-import { resolve } from 'path';
+const os = require('os');
+const fs = require('fs');
+const path = require('path');
 
 // Get the local machine's IP address
 const getLocalIp = () => {
-  const networkInterfaces = _networkInterfaces();
+  const networkInterfaces = os.networkInterfaces();
   let localIp = null;
   Object.entries(networkInterfaces).forEach(([, addresses]) => {
     addresses.forEach((addressInfo) => {
@@ -25,8 +25,8 @@ if (!localIp) {
 }
 
 // Write the IP address to the .env file
-const envFilePath = resolve(__dirname, '.env');
+const envFilePath = path.resolve(__dirname, '.env');
 const envContent = `API_BASE_URL=http://${localIp}:3001\n`;
-writeFileSync(envFilePath, envContent, { encoding: 'utf-8' });
+fs.writeFileSync(envFilePath, envContent, { encoding: 'utf-8' });
 
 console.log(`Local IP address (${localIp}) written to .env file`);

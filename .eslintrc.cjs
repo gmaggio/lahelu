@@ -30,6 +30,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['off'],
     'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1 }],
     'react/function-component-definition': [
