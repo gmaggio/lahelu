@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { faker } = require('@faker-js/faker');
 const express = require('express');
-const cors = require('cors');
 
 const app = express();
 const port = 3001;
@@ -109,8 +108,6 @@ const generateTags = () =>
   }));
 
 /* Generate All Data */
-
-app.use(cors());
 
 /* Dynamic Route for Posts */
 app.get('/posts', (req, res) => {
