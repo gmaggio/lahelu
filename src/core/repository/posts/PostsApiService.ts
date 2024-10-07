@@ -8,8 +8,9 @@ class PostsApiService {
         `/posts?_page=${page}&_limit=10`,
       );
       return response.data as PostsResponse;
-    } catch {
-      throw new Error('Failed to fetch posts');
+    } catch (error) {
+      console.log(error);
+      throw new Error('Failed to fetch posts data');
     }
   }
 }

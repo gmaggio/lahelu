@@ -24,7 +24,8 @@ export const fetchPosts = createAsyncThunk(
     try {
       const posts = await PostsRepository.getPosts(page);
       return posts;
-    } catch {
+    } catch (error) {
+      console.log(error);
       return rejectWithValue('Failed to fetch posts');
     }
   },
