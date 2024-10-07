@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch, RootState } from '@shared/state/store';
 import { fetchPosts } from './homeSlice';
@@ -9,8 +9,13 @@ const useHomeViewModel = () => {
     (state: RootState) => state.home,
   );
 
+  const isInitialLoad = useRef(true);
+
   useEffect(() => {
-    dispatch(fetchPosts(page));
+    if (isInitialLoad.current && page === 1) {
+      dispatch(fetchPosts(page));
+      isInitialLoad.current = false;
+    }
   }, [dispatch, page]);
 
   const loadMore = () => {
