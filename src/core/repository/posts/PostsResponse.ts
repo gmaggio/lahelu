@@ -7,9 +7,11 @@ export interface ApiPost {
   totalComments: number;
   createTime: string;
   feed: string;
+  mediaWidth: number;
+  mediaHeight: number;
   media: string;
   mediaThumbnail: string;
-  sensitive: string;
+  sensitive: boolean;
   mediaType: number;
   hashtags: string[];
   userUsername: string;
@@ -18,7 +20,6 @@ export interface ApiPost {
 
 export interface PostsResponse {
   posts: ApiPost[];
-  total: number;
-  page: number;
-  limit: number;
+  nextPage: number | null;
+  hasMore: boolean;
 }

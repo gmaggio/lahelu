@@ -23,7 +23,7 @@ const HomeView: React.FC = () => {
             <Text>{item.userUsername}</Text>
           </View>
         )}
-        keyExtractor={(item, index) => `${item.postID}_${index}`}
+        keyExtractor={(item) => `${item.postID}`}
         onEndReached={loadMore}
         onEndReachedThreshold={0.1}
         ListFooterComponent={loading ? <ActivityIndicator /> : null}

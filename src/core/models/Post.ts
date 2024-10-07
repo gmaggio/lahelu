@@ -12,6 +12,8 @@ export interface Post {
   totalComments: number;
   createTime: Date;
   feed: string;
+  mediaWidth: number;
+  mediaHeight: number;
   media: string;
   mediaThumbnail: string;
   sensitive: boolean;

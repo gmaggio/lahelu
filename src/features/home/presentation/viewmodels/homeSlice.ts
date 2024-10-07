@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { API_BASE_URL } from '@env';
 import { Post } from '@core/models/Post';
+import PostsRepository from '@core/repository/posts/PostsRepository';
 
 interface HomeState {
   posts: Post[];
@@ -22,11 +22,8 @@ export const fetchPosts = createAsyncThunk(
   'home/fetchPosts',
   async (page: number, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/posts?_page=${page}&_limit=10`,
-      );
-      const data = await response.json();
-      return data;
+      const posts = await PostsRepository.getPosts(page);
+      return posts;
     } catch {
       return rejectWithValue('Failed to fetch posts');
     }
