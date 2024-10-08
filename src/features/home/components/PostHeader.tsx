@@ -2,9 +2,6 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import DText from '@shared/components/DText';
-import { styled } from 'nativewind';
-
-const StyledView = styled(View);
 
 interface Props {
   userID: string;
@@ -21,14 +18,14 @@ const PostHeader: React.FC<Props> = ({
   dateCreated,
   classNameProp = '',
 }: Props) => (
-  <StyledView
+  <View
     key={`PostHeader-${userID}`}
     className={`flex-row items-center justify-between ${classNameProp}`}
   >
     <View className="flex-row items-center">
       <Image source={{ uri: avatar }} className="w-8 h-8 rounded-full mr-2" />
-      <DText className="text-white">{username}</DText>
-      <DText className="text-white">
+      <DText>{username}</DText>
+      <DText className="text-gray-300">
         {` • ${dateCreated.toLocaleDateString('id-ID', {
           day: 'numeric',
           month: 'short',
@@ -37,7 +34,7 @@ const PostHeader: React.FC<Props> = ({
       </DText>
     </View>
     <Entypo name="dots-three-horizontal" size={16} color="white" />
-  </StyledView>
+  </View>
 );
 
 export default PostHeader;

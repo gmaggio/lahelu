@@ -28,9 +28,9 @@ const tags = [
 
 const generatePost = () => {
   const userID = faker.number.int({ min: 0, max: 10 });
-  const mediaW = faker.number.int({ min: 350, max: 700 });
-  const mediaH = faker.number.int({ min: 350, max: 700 });
-  const media = faker.image.url({
+  const mediaW = faker.number.int({ min: 650, max: 800 });
+  const mediaH = faker.number.int({ min: 350, max: 650 });
+  const media = faker.image.urlLoremFlickr({
     options: {
       width: mediaW,
       height: mediaH,
@@ -119,7 +119,7 @@ const generateTags = () =>
 /* Dynamic Route for Posts */
 app.get('/posts', (req, res) => {
   const page = parseInt(req.query.page, 10) || 1;
-  const limit = parseInt(req.query.limit, 10) || 10;
+  const limit = parseInt(req.query.limit, 10) || 5;
   const totalPosts = 100;
 
   const postsData = generatePosts(limit, page, totalPosts);

@@ -10,7 +10,7 @@ import useHomeViewModel from '@features/home/presentation/viewmodels/useHomeView
 import PostItem from '@features/home/components/PostItem';
 
 const ItemSeparator: React.FC = () => (
-  <View className="h-4 border-b-black/50" />
+  <View className="w-full pb-6 mb-6 border-b-2 border-b-solid border-b-black" />
 );
 
 const HomeView: React.FC = () => {
@@ -28,7 +28,7 @@ const HomeView: React.FC = () => {
     <SafeAreaView className="flex-1 items-stretch bg-[#1a1a1a]">
       <FlatList
         testID="post-items"
-        className="bg-[#1a1a1a] p-6"
+        className="bg-[#1a1a1a] py-6"
         data={posts}
         renderItem={({ item }) => PostItem({ post: item })}
         keyExtractor={(item) => `${item.postID}`}

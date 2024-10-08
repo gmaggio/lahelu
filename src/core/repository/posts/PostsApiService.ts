@@ -5,7 +5,7 @@ class PostsApiService {
   static async fetchPosts(page: number): Promise<PostsResponse> {
     try {
       const response = await HttpClient.get<PostsResponse>(
-        `/posts?_page=${page}&_limit=10`,
+        `/posts?_page=${page}&_limit=5`,
       );
       return response.data as PostsResponse;
     } catch (error) {

@@ -1,11 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Text, TextProps } from 'react-native';
+import React, { ReactNode } from 'react';
 
-const DText: React.FC<TextProps> = ({
+interface DTextProps extends TextProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const DText: React.FC<DTextProps> = ({
   children,
   className,
   ...props
-}: TextProps) => (
+}: DTextProps) => (
   <Text className={`text-textColor ${className}`} {...props}>
     {children}
   </Text>
