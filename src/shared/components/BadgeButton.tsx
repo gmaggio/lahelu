@@ -21,7 +21,7 @@ const BadgeButton: React.FC<Props> = ({
   classNameLabel,
 }) => (
   <View
-    className={`flex-row items-center justify-between px-3 py-1 rounded-full border ${classNameProp}`}
+    className={`flex-row items-center justify-between px-3 py-1 border rounded-full ${classNameProp}`}
     style={{
       backgroundColor: badgeColor ?? 'transparent',
       borderColor: badgeColor ?? '#414141',
