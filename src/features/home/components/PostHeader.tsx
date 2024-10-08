@@ -4,7 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 import DText from '@shared/components/DText';
 
 interface Props {
-  userID: string;
+  postID: string;
   avatar: string;
   username: string;
   dateCreated: Date;
@@ -12,14 +12,14 @@ interface Props {
 }
 
 const PostHeader: React.FC<Props> = ({
-  userID,
+  postID,
   avatar,
   username,
   dateCreated,
   classNameProp = '',
 }: Props) => (
   <View
-    key={`PostHeader-${userID}`}
+    key={`PostHeader-${postID}`}
     className={`flex-row items-center justify-between ${classNameProp}`}
   >
     <View className="flex-row items-center">
