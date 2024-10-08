@@ -28,7 +28,14 @@ const tags = [
 
 const generatePost = () => {
   const userID = faker.number.int({ min: 0, max: 10 });
-  const mediaID = faker.number.int({ min: 0, max: 5 });
+  const mediaW = faker.number.int({ min: 350, max: 700 });
+  const mediaH = faker.number.int({ min: 350, max: 700 });
+  const media = faker.image.url({
+    options: {
+      width: mediaW,
+      height: mediaH,
+    },
+  });
 
   return {
     postID: faker.string.uuid(),
@@ -39,10 +46,10 @@ const generatePost = () => {
     totalComments: faker.number.int({ min: 0, max: 50 }),
     createTime: faker.date.past().getTime(),
     feed: 1,
-    mediaWidth: faker.number.int({ min: 350, max: 700 }),
-    mediaHeight: faker.number.int({ min: 350, max: 700 }),
-    media: `video-${mediaID}`,
-    mediaThumbnail: `thumbnail-${mediaID}`,
+    mediaWidth: mediaW,
+    mediaHeight: mediaH,
+    media,
+    mediaThumbnail: media,
     sensitive: faker.datatype.boolean(),
     mediaType: faker.number.int({ min: 0, max: 1 }),
     hashtags: faker.helpers.arrayElements(
@@ -50,7 +57,7 @@ const generatePost = () => {
       faker.number.int({ min: 2, max: 5 }),
     ),
     userUsername: faker.internet.userName(),
-    userAvatar: `avatar-${userID}`,
+    userAvatar: faker.image.avatar(),
   };
 };
 

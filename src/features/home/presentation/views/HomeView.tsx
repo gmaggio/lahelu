@@ -1,6 +1,17 @@
 import React from 'react';
-import { FlatList, Text, View, ActivityIndicator } from 'react-native';
+import {
+  FlatList,
+  Text,
+  View,
+  ActivityIndicator,
+  SafeAreaView,
+} from 'react-native';
 import useHomeViewModel from '@features/home/presentation/viewmodels/useHomeViewModel';
+import PostItem from '@features/home/components/PostItem';
+
+const ItemSeparator: React.FC = () => (
+  <View className="h-4 border-b-black/50" />
+);
 
 const HomeView: React.FC = () => {
   const { posts, loading, error, loadMore } = useHomeViewModel();
@@ -14,21 +25,19 @@ const HomeView: React.FC = () => {
   }
 
   return (
-    <View className="items-center justify-center flex-1 bg-white">
+    <SafeAreaView className="flex-1 items-stretch bg-[#1a1a1a]">
       <FlatList
+        testID="post-items"
+        className="bg-[#1a1a1a] p-6"
         data={posts}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.title}</Text>
-            <Text>{item.userUsername}</Text>
-          </View>
-        )}
+        renderItem={({ item }) => PostItem({ post: item })}
         keyExtractor={(item) => `${item.postID}`}
         onEndReached={loadMore}
-        onEndReachedThreshold={0.1}
+        onEndReachedThreshold={0.8}
         ListFooterComponent={loading ? <ActivityIndicator /> : null}
+        ItemSeparatorComponent={ItemSeparator}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

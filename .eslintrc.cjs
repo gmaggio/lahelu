@@ -25,13 +25,14 @@ module.exports = {
     ],
     'prettier/prettier': ['error'],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react/require-default-props': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': ['off'],
     'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-require-imports': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1 }],
     'react/function-component-definition': [
       'error',
@@ -39,6 +40,7 @@ module.exports = {
         namedComponents: ['arrow-function', 'function-declaration'],
       },
     ],
+    'arrow-body-style': 'warn',
     'comma-dangle': ['error', 'always-multiline'],
     'linebreak-style': 'off',
     'no-param-reassign': [
@@ -53,6 +55,7 @@ module.exports = {
       },
     ],
     'no-plusplus': 'off',
+    'no-unused-vars': 'warn',
   },
   overrides: [
     {
