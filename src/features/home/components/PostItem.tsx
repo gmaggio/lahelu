@@ -2,6 +2,7 @@ import { Post } from '@core/models/Post';
 import DText from '@shared/components/DText';
 import { View, Image } from 'react-native';
 import PostHeader from '@features/home/components/PostHeader';
+import clsx from 'clsx';
 import PostFooter from './PostFooter';
 
 interface Props {
@@ -30,7 +31,7 @@ const PostItem = ({ post }: Props) => {
   } = post;
 
   return (
-    <View key={postID} className="flex items-stretch justify-stretch">
+    <View key={postID} className="items-stretch justify-stretch">
       {/* Header */}
       <View className="px-6 pb-3">
         <PostHeader
@@ -44,7 +45,14 @@ const PostItem = ({ post }: Props) => {
       </View>
 
       {/* Content */}
-      <View className="w-full max-h-[500] min-h-[350] items-center justify-start overflow-hidden object-cover bg-gray-600">
+      <View
+        className={clsx(
+          'items-center justify-start',
+          'w-full max-h-[500] min-h-[350]',
+          'overflow-hidden object-cover',
+          'bg-gray-600',
+        )}
+      >
         <Image
           source={{ uri: media }}
           width={mediaWidth}

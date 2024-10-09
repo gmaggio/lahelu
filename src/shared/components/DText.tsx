@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Text, TextProps } from 'react-native';
 import React, { ReactNode } from 'react';
+import clsx from 'clsx';
 
 interface DTextProps extends TextProps {
   children: ReactNode;
@@ -12,7 +13,7 @@ const DText: React.FC<DTextProps> = ({
   className,
   ...props
 }: DTextProps) => (
-  <Text className={`text-textColor ${className}`} {...props}>
+  <Text className={clsx('text-textColor', className)} {...props}>
     {children}
   </Text>
 );

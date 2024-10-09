@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import DText from '@shared/components/DText';
+import clsx from 'clsx';
 
 interface Props {
   postID: string;
@@ -20,10 +21,10 @@ const PostHeader: React.FC<Props> = ({
 }: Props) => (
   <View
     key={`PostHeader-${postID}`}
-    className={`flex-row items-center justify-between ${classNameProp}`}
+    className={clsx('flex-row items-center justify-between', classNameProp)}
   >
     <View className="flex-row items-center">
-      <Image source={{ uri: avatar }} className="w-8 h-8 rounded-full mr-2" />
+      <Image source={{ uri: avatar }} className="w-8 h-8 mr-2 rounded-full" />
       <DText>{username}</DText>
       <DText className="text-gray-300">
         {` • ${dateCreated.toLocaleDateString('id-ID', {

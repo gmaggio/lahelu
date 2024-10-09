@@ -1,5 +1,6 @@
 import { Icon } from '@expo/vector-icons/build/createIconSet';
 import DText from '@shared/components/DText';
+import clsx from 'clsx';
 import React from 'react';
 import { ColorValue, View } from 'react-native';
 
@@ -21,7 +22,12 @@ const BadgeButton: React.FC<Props> = ({
   classNameLabel,
 }) => (
   <View
-    className={`flex-row items-center justify-between px-3 py-1 border rounded-full ${classNameProp}`}
+    className={clsx(
+      'flex-row items-center justify-between',
+      'px-3 py-1',
+      'border rounded-full',
+      classNameProp,
+    )}
     style={{
       backgroundColor: badgeColor ?? 'transparent',
       borderColor: badgeColor ?? '#414141',
@@ -29,7 +35,7 @@ const BadgeButton: React.FC<Props> = ({
   >
     {icon !== null && icon}
     <DText
-      className={`${icon !== null && 'pl-2'} ${classNameLabel}`}
+      className={clsx(icon !== null && 'pl-2', classNameLabel)}
       style={{
         color: textColor ?? 'white',
       }}

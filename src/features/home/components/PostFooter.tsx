@@ -3,6 +3,7 @@ import BoxedButtons from '@shared/components/BoxedButtons';
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import clsx from 'clsx';
 
 interface PostFooterProps {
   postID: string;
@@ -43,7 +44,7 @@ const PostFooter: React.FC<PostFooterProps> = ({
     </ScrollView>
 
     {/* Interactions */}
-    <View className="flex-row items-center justify-between pt-3">
+    <View className={clsx('flex-row items-center justify-between', 'pt-3')}>
       <View
         className="flex-row items-start"
         style={{
