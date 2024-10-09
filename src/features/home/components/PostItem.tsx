@@ -44,7 +44,7 @@ const PostItem = ({ post }: Props) => {
       </View>
 
       {/* Content */}
-      <View className="w-full max-h-[500] min-h-[350] items-center justify-start overflow-hidden object-cover rounded-lg bg-gray-600">
+      <View className="w-full max-h-[500] min-h-[350] items-center justify-start overflow-hidden object-cover bg-gray-600">
         <Image
           source={{ uri: media }}
           width={mediaWidth}
