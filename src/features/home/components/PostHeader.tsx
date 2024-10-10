@@ -26,7 +26,7 @@ const PostHeader: React.FC<Props> = ({
     <View className="flex-row items-center">
       <Image source={{ uri: avatar }} className="w-8 h-8 mr-2 rounded-full" />
       <DText>{username}</DText>
-      <DText className="text-gray-300">
+      <DText className="text-gray-400">
         {` • ${dateCreated.toLocaleDateString('id-ID', {
           day: 'numeric',
           month: 'short',

@@ -1,5 +1,5 @@
 import { Icon } from '@expo/vector-icons/build/createIconSet';
-import { DText } from '@shared/components';
+import DText from '@shared/components/DText';
 import clsx from 'clsx';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';

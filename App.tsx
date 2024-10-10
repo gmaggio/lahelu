@@ -23,7 +23,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer linking={linking}>
         <RouteWrapper />
-        <StatusBar />
+        <StatusBar style="light" translucent />
       </NavigationContainer>
     </Provider>
   );
