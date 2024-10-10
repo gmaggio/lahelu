@@ -1,9 +1,8 @@
-import BadgeButton from '@shared/components/BadgeButton';
-import BoxedButtons from '@shared/components/BoxedButtons';
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import clsx from 'clsx';
+import { BadgeButton, BoxedButtons } from '@shared/components';
 
 interface PostFooterProps {
   postID: string;

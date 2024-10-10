@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
-import DText from '@shared/components/DText';
 import clsx from 'clsx';
+import { DText } from '@shared/components';
 
 interface Props {
   postID: string;

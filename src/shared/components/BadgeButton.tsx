@@ -1,5 +1,5 @@
 import { Icon } from '@expo/vector-icons/build/createIconSet';
-import DText from '@shared/components/DText';
+import { DText } from '@shared/components';
 import clsx from 'clsx';
 import React from 'react';
 import { ColorValue, View } from 'react-native';

@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeView from '@features/home/presentation/views/HomeView';
-import ScreenHeader from '@shared/components/ScreenHeader';
+import { Header } from '@shared/components';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -17,7 +17,7 @@ const routeMap: Record<keyof RootStackParamList, RouteType> = {
     component: HomeView,
     options: {
       title: 'Lahelu',
-      header: () => <ScreenHeader />,
+      header: () => <Header />,
     },
     path: 'home',
   },
