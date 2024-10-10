@@ -11,6 +11,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/open-sans": "^0.2.3",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "@reduxjs/toolkit": "^2.2.7",
@@ -18,6 +19,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "expo": "~51.0.28",
+    "expo-splash-screen": "^0.27.6",
     "expo-status-bar": "~1.12.1",
     "express": "^4.21.0",
     "nativewind": "^2.0.11",

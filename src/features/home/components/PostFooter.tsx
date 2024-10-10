@@ -28,7 +28,7 @@ const PostFooter: React.FC<PostFooterProps> = ({
       }}
     >
       <BadgeButton
-        classNameLabel="font-bold"
+        classNameLabel="font-openSansBold"
         badgeColor="#dd952a"
         label="Sawer"
         icon={<FontAwesome name="dollar" size={12} color="white" />}

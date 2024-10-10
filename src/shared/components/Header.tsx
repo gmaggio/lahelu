@@ -19,7 +19,9 @@ const Header = () => {
       }}
     >
       <View className={clsx('p-6')}>
-        <DText className="text-[#65a4ec] text-2xl font-bold">LAHELU</DText>
+        <DText className="text-[#65a4ec] text-2xl" weight="800ExtraBold" italic>
+          LAHELU
+        </DText>
       </View>
     </View>
   );

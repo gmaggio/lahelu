@@ -41,7 +41,7 @@ const PostItem = ({ post }: Props) => {
           avatar={userAvatar}
           dateCreated={createTime}
         />
-        <DText className="font-bold">{title}</DText>
+        <DText weight="700Bold">{title}</DText>
       </View>
 
       {/* Content */}
