@@ -26,6 +26,7 @@ const BadgeButton: React.FC<Props> = ({
       'flex-row items-center justify-between',
       'px-3 py-1',
       'border rounded-full',
+      'leading-none',
       classNameProp,
     )}
     style={{
@@ -35,7 +36,7 @@ const BadgeButton: React.FC<Props> = ({
   >
     {icon !== null && icon}
     <DText
-      className={clsx(icon !== null && 'pl-2', classNameLabel)}
+      className={clsx(icon !== null && 'pl-1', classNameLabel)}
       style={{
         color: textColor ?? 'white',
       }}

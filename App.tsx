@@ -6,6 +6,7 @@ import routeMap from '@routes/routeMap';
 import { NavigationContainer } from '@react-navigation/native';
 import store from '@shared/state/store';
 import * as SplashScreen from 'expo-splash-screen';
+import { Ionicons } from '@expo/vector-icons';
 import {
   useFonts,
   OpenSans_300Light,
@@ -22,6 +23,8 @@ import {
   OpenSans_800ExtraBold_Italic,
 } from '@expo-google-fonts/open-sans';
 import { useEffect } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const linking = {
   prefixes: ['https://lahelu.com', 'lahelu://'],
@@ -34,6 +37,34 @@ const linking = {
       {} as Record<string, string>,
     ),
   },
+};
+
+const Tab = createBottomTabNavigator();
+
+const renderTabBarIcon = (routeName: string, color: string, size: number) => {
+  let iconName: keyof typeof Ionicons.glyphMap = 'home';
+
+  switch (routeName) {
+    case 'Main':
+      iconName = 'home-outline';
+      break;
+    case 'Topics':
+      iconName = 'people-outline';
+      break;
+    case 'Create':
+      iconName = 'add-circle-outline';
+      break;
+    case 'Notifications':
+      iconName = 'notifications-outline';
+      break;
+    case 'User':
+      iconName = 'person-circle';
+      break;
+    default:
+      break;
+  }
+
+  return <Ionicons name={iconName} size={size} color={color} />;
 };
 
 export default function App() {
@@ -64,10 +95,60 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer linking={linking}>
-        <RouteWrapper />
-        <StatusBar style="light" translucent />
-      </NavigationContainer>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer linking={linking}>
+          {/* <RouteWrapper /> */}
+
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              headerShown: false,
+              tabBarActiveTintColor: 'white',
+              tabBarInactiveTintColor: 'white',
+              backgroundColor: '#1a1a1a',
+              tabBarActiveBackgroundColor: '#1a1a1a',
+              tabBarInactiveBackgroundColor: '#1a1a1a',
+              tabBarShowLabel: false,
+              tabBarStyle: {
+                borderTopWidth: 0,
+              },
+              tabBarItemStyle: {
+                borderTopWidth: 2,
+                borderTopColor: '#000',
+              },
+              tabBarIcon: ({ color, size }) =>
+                renderTabBarIcon(route.name, color, size),
+            })}
+          >
+            <Tab.Screen
+              name="Main"
+              component={RouteWrapper}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Topics"
+              component={RouteWrapper}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Create"
+              component={RouteWrapper}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="Notifications"
+              component={RouteWrapper}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name="User"
+              component={RouteWrapper}
+              options={{ headerShown: false }}
+            />
+          </Tab.Navigator>
+
+          <StatusBar style="light" backgroundColor="#1a1a1a" />
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </Provider>
   );
 }

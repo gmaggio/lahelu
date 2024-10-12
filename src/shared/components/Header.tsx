@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const Header = () => {
   const insets = useSafeAreaInsets();
@@ -23,7 +23,7 @@ const Header = () => {
         )}
       >
         <View className={clsx('flex-row items-center')}>
-          <Feather name="menu" size={22} color="white" />
+          <Ionicons name="menu" size={22} color="white" />
           <DText
             className={clsx('text-[#65a4ec] text-2xl', 'pl-4')}
             weight="800ExtraBold"
@@ -31,11 +31,11 @@ const Header = () => {
             LAHELU
           </DText>
         </View>
-        <View className="flex-row gap-4">
-          <Feather name="search" size={22} color="white" />
-          <Feather name="plus-circle" size={22} color="white" />
-          <Feather name="bell" size={22} color="white" />
-          <Feather name="user" size={22} color="white" />
+        <View className="flex-row gap-6">
+          <Ionicons name="search-outline" size={22} color="white" />
+          <Ionicons name="add-circle-outline" size={22} color="white" />
+          <Ionicons name="notifications-outline" size={22} color="white" />
+          <Ionicons name="person-circle" size={22} color="white" />
         </View>
       </View>
     </View>

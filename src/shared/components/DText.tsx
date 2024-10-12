@@ -24,6 +24,9 @@ const DText: React.FC<DTextProps> = ({
       'text-textColor',
       className,
     )}
+    style={{
+      includeFontPadding: false,
+    }}
     {...props}
   >
     {children}
