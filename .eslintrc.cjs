@@ -56,6 +56,14 @@ module.exports = {
     ],
     'no-plusplus': 'off',
     'no-unused-vars': 'warn',
+    'no-use-before-define': [
+      'error',
+      {
+        functions: false,
+        classes: true,
+        variables: true,
+      },
+    ],
   },
   overrides: [
     {
