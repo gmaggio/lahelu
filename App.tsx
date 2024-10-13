@@ -3,10 +3,14 @@ import { Provider } from 'react-redux';
 import RouteWrapper from 'src/routes/RouteWrapper';
 import { StatusBar } from 'expo-status-bar';
 import routeMap from '@routes/routeMap';
-import { NavigationContainer } from '@react-navigation/native';
+import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import store from '@shared/state/store';
 import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
+import { useEffect } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Header } from '@shared/components';
 import {
   useFonts,
   OpenSans_300Light,
@@ -22,17 +26,15 @@ import {
   OpenSans_800ExtraBold,
   OpenSans_800ExtraBold_Italic,
 } from '@expo-google-fonts/open-sans';
-import { useEffect } from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import PostsView from '@features/posts/presentation/views/PostsView';
 
-const linking = {
+const linking: LinkingOptions<ReactNavigation.RootParamList> | undefined = {
   prefixes: ['https://lahelu.com', 'lahelu://'],
   config: {
     screens: Object.keys(routeMap).reduce(
-      (acc, routeName) => {
+      (screenConfig, routeName) => {
         const { path } = routeMap[routeName as keyof typeof routeMap];
-        return { ...acc, [routeName]: path };
+        return { ...screenConfig, [routeName]: path };
       },
       {} as Record<string, string>,
     ),
@@ -41,11 +43,13 @@ const linking = {
 
 const Tab = createBottomTabNavigator();
 
+const renderHeader = () => <Header />;
+
 const renderTabBarIcon = (routeName: string, color: string, size: number) => {
   let iconName: keyof typeof Ionicons.glyphMap = 'home';
 
   switch (routeName) {
-    case 'Main':
+    case 'Home':
       iconName = 'home-outline';
       break;
     case 'Topics':
@@ -101,10 +105,11 @@ export default function App() {
 
           <Tab.Navigator
             screenOptions={({ route }) => ({
-              headerShown: false,
-              tabBarActiveTintColor: 'white',
-              tabBarInactiveTintColor: 'white',
+              headerShown: true,
+              header: renderHeader,
               backgroundColor: '#1a1a1a',
+              tabBarActiveTintColor: '#4f738b',
+              tabBarInactiveTintColor: 'white',
               tabBarActiveBackgroundColor: '#1a1a1a',
               tabBarInactiveBackgroundColor: '#1a1a1a',
               tabBarShowLabel: false,
@@ -119,31 +124,11 @@ export default function App() {
                 renderTabBarIcon(route.name, color, size),
             })}
           >
-            <Tab.Screen
-              name="Main"
-              component={RouteWrapper}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Topics"
-              component={RouteWrapper}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Create"
-              component={RouteWrapper}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Notifications"
-              component={RouteWrapper}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="User"
-              component={RouteWrapper}
-              options={{ headerShown: false }}
-            />
+            <Tab.Screen name="Home" component={PostsView} />
+            <Tab.Screen name="Topics" component={PostsView} />
+            <Tab.Screen name="Create" component={PostsView} />
+            <Tab.Screen name="Notifications" component={PostsView} />
+            <Tab.Screen name="User" component={PostsView} />
           </Tab.Navigator>
 
           <StatusBar style="light" backgroundColor="#1a1a1a" />

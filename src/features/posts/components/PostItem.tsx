@@ -1,8 +1,8 @@
 import { Post } from '@core/models/Post';
 import { View, Image } from 'react-native';
 import clsx from 'clsx';
-import PostFooter from '@features/home/components/PostFooter';
-import PostHeader from '@features/home/components/PostHeader';
+import PostFooter from '@features/posts/components/PostFooter';
+import PostHeader from '@features/posts/components/PostHeader';
 import { DText } from '@shared/components';
 
 interface Props {

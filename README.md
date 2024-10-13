@@ -22,7 +22,7 @@ The project is organized as follows:
 │       ├── tags
 │       └── topics
 ├── features
-│   └── home
+│   └── posts
 │       ├── components
 │       │   ├── PostFooter.tsx
 │       │   ├── PostHeader.tsx
@@ -31,10 +31,10 @@ The project is organized as follows:
 │       ├── domain
 │       └── presentation
 │           ├── viewmodels
-│           │   ├── homeSlice.ts
-│           │   └── useHomeViewModel.ts
+│           │   ├── postsSlice.ts
+│           │   └── usePostsViewModel.ts
 │           └── views
-│               └── HomeView.tsx
+│               └── PostsView.tsx
 ├── routes
 │   ├── routeMap.tsx
 │   └── RouteWrapper.tsx
@@ -56,7 +56,7 @@ The project is organized as follows:
 ```
 
 - `src/core`: Core functionalities like models and repositories.
-- `src/features`: Feature-specific code, e.g., home feature.
+- `src/features`: Feature-specific code, e.g., posts feature.
 - `src/routes`: Routing configuration and wrappers.
 - `src/shared`: Shared components and utilities.
 

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import homeReducer from '@features/home/presentation/viewmodels/homeSlice';
+import postsReducer from '@features/posts/presentation/viewmodels/postsSlice';
 
 const store = configureStore({
   reducer: {
-    home: homeReducer,
+    posts: postsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

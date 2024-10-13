@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch, RootState } from '@shared/state/store';
-import { fetchPosts } from './homeSlice';
+import { fetchPosts } from './postsSlice';
 
-const useHomeViewModel = () => {
+const usePostsViewModel = () => {
   const dispatch = useAppDispatch();
   const { posts, loading, error, page, hasMore } = useSelector(
-    (state: RootState) => state.home,
+    (state: RootState) => state.posts,
   );
 
   const isInitialLoad = useRef(true);
@@ -32,4 +32,4 @@ const useHomeViewModel = () => {
   };
 };
 
-export default useHomeViewModel;
+export default usePostsViewModel;

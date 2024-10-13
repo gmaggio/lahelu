@@ -1,25 +1,24 @@
 import React from 'react';
-import HomeView from '@features/home/presentation/views/HomeView';
-import { Header } from '@shared/components';
+import PostsView from '@features/posts/presentation/views/PostsView';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-  Home: undefined;
+  Posts: undefined;
 };
 
 interface RouteType {
   component: React.ComponentType<object>;
-  options: object;
+  options: NativeStackNavigationOptions;
   path: string;
 }
 
 const routeMap: Record<keyof RootStackParamList, RouteType> = {
-  Home: {
-    component: HomeView,
+  Posts: {
+    component: PostsView,
     options: {
-      title: 'Lahelu',
-      header: () => <Header />,
+      headerShown: false,
     },
-    path: 'home',
+    path: 'posts',
   },
 };
 

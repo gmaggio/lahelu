@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Post } from '@core/models/Post';
 import PostsRepository from '@core/repository/posts/PostsRepository';
 
-interface HomeState {
+interface PostsState {
   posts: Post[];
   loading: boolean;
   error: string | null;
@@ -10,7 +10,7 @@ interface HomeState {
   hasMore: boolean;
 }
 
-const initialState: HomeState = {
+const initialState: PostsState = {
   posts: [],
   loading: false,
   error: null,
@@ -19,7 +19,7 @@ const initialState: HomeState = {
 };
 
 export const fetchPosts = createAsyncThunk(
-  'home/fetchPosts',
+  'posts/fetchPosts',
   async (page: number, { rejectWithValue }) => {
     try {
       const posts = await PostsRepository.getPosts(page);
@@ -31,8 +31,8 @@ export const fetchPosts = createAsyncThunk(
   },
 );
 
-const homeSlice = createSlice({
-  name: 'home',
+const postsSlice = createSlice({
+  name: 'posts',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -53,4 +53,4 @@ const homeSlice = createSlice({
   },
 });
 
-export default homeSlice.reducer;
+export default postsSlice.reducer;

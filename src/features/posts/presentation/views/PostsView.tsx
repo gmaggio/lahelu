@@ -6,8 +6,8 @@ import {
   ActivityIndicator,
   SafeAreaView,
 } from 'react-native';
-import useHomeViewModel from '@features/home/presentation/viewmodels/useHomeViewModel';
-import PostItem from '@features/home/components/PostItem';
+import usePostsViewModel from '@features/posts/presentation/viewmodels/usePostsViewModel';
+import PostItem from '@features/posts/components/PostItem';
 import clsx from 'clsx';
 
 const ItemSeparator: React.FC = () => (
@@ -19,8 +19,8 @@ const ItemSeparator: React.FC = () => (
   />
 );
 
-const HomeView: React.FC = () => {
-  const { posts, loading, error, loadMore } = useHomeViewModel();
+const PostsView: React.FC = () => {
+  const { posts, loading, error, loadMore } = usePostsViewModel();
 
   if (loading && posts.length === 0) {
     return <ActivityIndicator />;
@@ -47,4 +47,4 @@ const HomeView: React.FC = () => {
   );
 };
 
-export default HomeView;
+export default PostsView;
