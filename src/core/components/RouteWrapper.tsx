@@ -1,5 +1,5 @@
+import { routeMap } from '@core/routes';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import routeMap from './routeMap';
 
 const Stack = createNativeStackNavigator();
 

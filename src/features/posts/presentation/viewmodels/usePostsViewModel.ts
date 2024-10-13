@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch, RootState } from '@shared/state/store';
-import { fetchPosts } from './postsSlice';
+import { useAppDispatch, RootState } from '@core/state/store';
+import { fetchPosts } from '@features/posts/presentation/viewmodels/postsSlice';
 
 const usePostsViewModel = () => {
   const dispatch = useAppDispatch();

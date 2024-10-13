@@ -5,12 +5,12 @@ import { View, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-export interface HeaderProps {
+export interface AppHeaderProps {
   openTagsDrawer: () => void;
   openSearchDrawer: () => void;
 }
 
-const Header = ({ openTagsDrawer, openSearchDrawer }: HeaderProps) => {
+const AppHeader = ({ openTagsDrawer, openSearchDrawer }: AppHeaderProps) => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -79,4 +79,4 @@ const Header = ({ openTagsDrawer, openSearchDrawer }: HeaderProps) => {
   );
 };
 
-export default Header;
+export default AppHeader;

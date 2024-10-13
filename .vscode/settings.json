@@ -1,0 +1,10 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "cSpell.words": ["Lahelu"],
+  "prettier.useEditorConfig": true,
+  "favorites.sortDirection": "DESC",
+  "exportall.config.namedExports": true,
+  "exportall.config.folderListener": ["/src/shared/components"]
+}

@@ -1,5 +1,5 @@
 import { Post, MediaType } from '@core/models/Post';
-import { ApiPost } from './PostsResponse';
+import { ApiPost } from '@core/repository/posts/PostsResponse';
 
 export function mapApiPostToPost(apiPost: ApiPost): Post {
   const validMediaType = Object.values(MediaType).includes(apiPost.mediaType)

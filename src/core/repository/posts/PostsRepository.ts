@@ -1,6 +1,6 @@
 import { Post } from '@core/models/Post';
 import { mapApiPostToPost } from '@core/repository/posts/PostMapper';
-import PostsApiService from './PostsApiService';
+import PostsApiService from '@core/repository/posts/PostsApiService';
 
 class PostsRepository {
   static async getPosts(page: number): Promise<Post[]> {
