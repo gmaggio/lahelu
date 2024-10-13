@@ -5,7 +5,12 @@ import { View, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-const Header = () => {
+export interface HeaderProps {
+  openTagsDrawer: () => void;
+  openSearchDrawer: () => void;
+}
+
+const Header = ({ openTagsDrawer, openSearchDrawer }: HeaderProps) => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -23,7 +28,7 @@ const Header = () => {
         )}
       >
         <View className={clsx('flex-row items-center')}>
-          <TouchableOpacity className="p-3">
+          <TouchableOpacity className="p-3" onPress={openTagsDrawer}>
             <Ionicons name="menu" size={22} color="white" />
           </TouchableOpacity>
           <DText
@@ -37,7 +42,7 @@ const Header = () => {
           {[
             {
               icon: 'search-outline',
-              action: () => {},
+              action: openSearchDrawer,
               mobileOnly: true,
             },
             {
