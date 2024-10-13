@@ -7,18 +7,18 @@ export type RootStackParamList = {
 };
 
 interface RouteType {
+  name: string;
   component: React.ComponentType<object>;
   options: NativeStackNavigationOptions;
-  path: string;
 }
 
 const routeMap: Record<keyof RootStackParamList, RouteType> = {
   Posts: {
+    name: 'posts',
     component: PostsView,
     options: {
       headerShown: false,
     },
-    path: 'posts',
   },
 };
 

@@ -33,8 +33,8 @@ const linking: LinkingOptions<ReactNavigation.RootParamList> | undefined = {
   config: {
     screens: Object.keys(routeMap).reduce(
       (screenConfig, routeName) => {
-        const { path } = routeMap[routeName as keyof typeof routeMap];
-        return { ...screenConfig, [routeName]: path };
+        const { name } = routeMap[routeName as keyof typeof routeMap];
+        return { ...screenConfig, [routeName]: name };
       },
       {} as Record<string, string>,
     ),
