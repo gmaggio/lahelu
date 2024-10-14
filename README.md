@@ -11,16 +11,29 @@ The project is organized as follows:
 ```
 .
 ├── core
+│   ├── components
+│   │   ├── AppDrawer.tsx
+│   │   ├── AppHeader.tsx
+│   │   ├── BottomTabs.tsx
+│   │   ├── index.ts
+│   │   └── RouteWrapper.tsx
+│   ├── hooks
+│   │   ├── index.ts
+│   │   └── useLoadFonts.ts
 │   ├── models
 │   │   └── Post.ts
-│   └── repository
-│       ├── posts
-│       │   ├── PostMapper.ts
-│       │   ├── PostsApiService.ts
-│       │   ├── PostsRepository.ts
-│       │   └── PostsResponse.ts
-│       ├── tags
-│       └── topics
+│   ├── repository
+│   │   └── posts
+│   │       ├── PostMapper.ts
+│   │       ├── PostsApiService.ts
+│   │       ├── PostsRepository.ts
+│   │       └── PostsResponse.ts
+│   ├── routes
+│   │   ├── index.ts
+│   │   ├── linkingConfig.tsx
+│   │   └── routeMap.tsx
+│   └── state
+│       └── store.ts
 ├── features
 │   └── posts
 │       ├── components
@@ -35,9 +48,6 @@ The project is organized as follows:
 │           │   └── usePostsViewModel.ts
 │           └── views
 │               └── PostsView.tsx
-├── routes
-│   ├── routeMap.tsx
-│   └── RouteWrapper.tsx
 ├── shared
 │   ├── api
 │   │   └── HttpClient.ts
@@ -45,13 +55,12 @@ The project is organized as follows:
 │   │   ├── BadgeButton.tsx
 │   │   ├── BoxedButtons.tsx
 │   │   ├── DText.tsx
-│   │   └── ScreenHeader.tsx
-│   ├── config
-│   ├── hooks
-│   ├── services
-│   ├── state
-│   │   └── store.ts
+│   │   ├── index.ts
+│   │   ├── SearchDrawer.tsx
+│   │   └── TagsDrawer.tsx
 │   └── utils
+│       ├── getFontFamily.ts
+│       └── index.ts
 └── global.d.ts
 ```
 
