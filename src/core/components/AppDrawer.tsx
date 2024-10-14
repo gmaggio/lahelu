@@ -7,34 +7,34 @@ import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 export interface DrawerViewProps {
   name: string;
-  component: React.ComponentType<unknown>;
+  component: React.ComponentType;
 }
 
 type DrawerParamList = {
-  HomeStack: undefined;
-  Settings: undefined;
+  TagsDrawer: undefined;
+  SearchDrawer: undefined;
 };
 
-const Main = () => {
-  const navigation = useNavigation();
+const Main: React.FC = () => {
+  const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
-  const openTagsDrawer = () => {
-    navigation.dispatch(DrawerActions.openDrawer());
-  };
-
-  const openSearchDrawer = () => {
-    const parentNavigation =
-      navigation.getParent<DrawerNavigationProp<DrawerParamList>>();
-    if (parentNavigation) {
-      parentNavigation.openDrawer();
+  const openDrawer = (drawerType: 'tags' | 'search') => {
+    if (drawerType === 'tags') {
+      navigation.dispatch(DrawerActions.openDrawer());
+    } else {
+      const parentNavigation =
+        navigation.getParent<DrawerNavigationProp<DrawerParamList>>();
+      if (parentNavigation) {
+        parentNavigation.openDrawer();
+      }
     }
   };
 
   return (
     <View className="flex-1">
       <AppHeader
-        openTagsDrawer={() => openTagsDrawer()}
-        openSearchDrawer={() => openSearchDrawer()}
+        openTagsDrawer={() => openDrawer('tags')}
+        openSearchDrawer={() => openDrawer('search')}
       />
       <BottomTabs />
     </View>
