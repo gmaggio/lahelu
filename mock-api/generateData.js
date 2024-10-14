@@ -1,10 +1,13 @@
 require('dotenv').config();
 const { faker } = require('@faker-js/faker');
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const port = 3001;
 const { API_BASE_URL } = process.env;
+
+app.use(cors());
 
 const tags = [
   'Absurd',
@@ -115,6 +118,17 @@ const generateTags = () =>
   }));
 
 /* Generate All Data */
+
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to the Mock API',
+    endpoints: {
+      posts: '/posts',
+      topics: '/topics',
+      tags: '/tags',
+    },
+  });
+});
 
 /* Dynamic Route for Posts */
 app.get('/posts', (req, res) => {

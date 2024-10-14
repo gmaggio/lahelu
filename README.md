@@ -89,19 +89,7 @@ The project is organized as follows:
 
 ### Running the Project
 
-1. Set up environment variables:
-
-```sh
-npm run detect-ip
-```
-
-2. Start the mock server, run:
-
-```sh
-npm run start-mock-server
-```
-
-1. To start the development server, run:
+To start the development server, run:
 
 ```sh
 npx expo start
