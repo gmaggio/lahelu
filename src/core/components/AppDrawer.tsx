@@ -1,36 +1,52 @@
-import DText from '@shared/components/DText';
-import React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import AppHeader from '@core/components/AppHeader';
+import BottomTabs from '@core/components/BottomTabs';
+import { SearchDrawerView, TagsDrawerView } from '@shared/components';
+import { View } from 'react-native';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 
-interface AppDrawerProps {
-  type: 'tags' | 'search';
+export interface DrawerViewProps {
+  name: string;
+  component: React.ComponentType<unknown>;
 }
 
-const AppDrawer: React.FC<AppDrawerProps> = ({ type }) => {
-  const content = {
-    tags: {
-      title: 'Filter by Tag',
-      items: ['Tag1', 'Tag2', 'Tag3'],
-    },
-    search: {
-      title: 'Notifications',
-      items: ['Notification 1', 'Notification 2', 'Notification 3'],
-    },
+type DrawerParamList = {
+  HomeStack: undefined;
+  Settings: undefined;
+};
+
+const Main = () => {
+  const navigation = useNavigation();
+
+  const openTagsDrawer = () => {
+    navigation.dispatch(DrawerActions.openDrawer());
+  };
+
+  const openSearchDrawer = () => {
+    const parentNavigation =
+      navigation.getParent<DrawerNavigationProp<DrawerParamList>>();
+    if (parentNavigation) {
+      parentNavigation.openDrawer();
+    }
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#1a1a1a', padding: 16 }}>
-      <DText className="text-lg text-white" weight="800ExtraBold">
-        {content[type].title}
-      </DText>
-      {content[type].items.map((item) => (
-        <TouchableOpacity key={item} onPress={() => console.log(`${item}`)}>
-          <DText className="text-white">{item}</DText>
-        </TouchableOpacity>
-      ))}
-    </SafeAreaView>
+    <View className="flex-1">
+      <AppHeader
+        openTagsDrawer={() => openTagsDrawer()}
+        openSearchDrawer={() => openSearchDrawer()}
+      />
+      <BottomTabs />
+    </View>
   );
 };
+
+const TagsDrawer = () => <TagsDrawerView name="Main" component={Main} />;
+
+const SearchDrawer = () => (
+  <SearchDrawerView name="TagsDrawer" component={TagsDrawer} />
+);
+
+const AppDrawer: React.FC = () => <SearchDrawer />;
 
 export default AppDrawer;

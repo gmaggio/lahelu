@@ -6,5 +6,8 @@
   "prettier.useEditorConfig": true,
   "favorites.sortDirection": "DESC",
   "exportall.config.namedExports": true,
-  "exportall.config.folderListener": ["/src/shared/components"]
+  "exportall.config.folderListener": [
+    "/src/shared/components",
+    "/src/core/components"
+  ]
 }

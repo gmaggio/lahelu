@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PostsView from '@features/posts/presentation/views/PostsView';
 import { Ionicons } from '@expo/vector-icons';
+import RouteWrapper from '@core/components/RouteWrapper';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,7 +38,7 @@ const BottomTabs = () => (
         renderTabBarIcon(route.name, color, size),
     })}
   >
-    <Tab.Screen name="Home" component={PostsView} />
+    <Tab.Screen name="Home" component={RouteWrapper} />
     <Tab.Screen name="Topics" component={PostsView} />
     <Tab.Screen name="Create" component={PostsView} />
     <Tab.Screen name="Notifications" component={PostsView} />
